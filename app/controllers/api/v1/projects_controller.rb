@@ -16,7 +16,7 @@ class Api::V1::ProjectsController < ApplicationController
 
   def update
     @project.images.attach(params[:project][:images])
-    @project.update
+    @project.update(project_params)
     if @project.valid?
       render json: { project: ProjectSerializer.new(@project) }, status: :accepted
     else
