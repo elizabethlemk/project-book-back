@@ -1,5 +1,5 @@
 class Project < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   has_many :notes, dependent: :destroy
   has_many :links, dependent: :destroy
 
