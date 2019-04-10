@@ -18,9 +18,9 @@ gem 'bcrypt', '~> 3.1.7'
 # User Active Model Serializers to control JSON data
 gem 'active_model_serializers', '~> 0.10.0'
 # Use ActiveStorage variant
-gem 'mini_magick', '~> 4.8'
+# gem 'mini_magick', '~> 4.8'
 
-gem 'ngrok-tunnel'
+# gem 'ngrok-tunnel'
 # User JWT for Authetication
 gem "jwt", "~> 2.1"
 

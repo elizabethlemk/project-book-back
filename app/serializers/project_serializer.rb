@@ -1,5 +1,5 @@
 class ProjectSerializer < ActiveModel::Serializer
-  attributes :id, :title, :color, :images, :completed
+  attributes :id, :title, :color, :images, :completed, :notes, :links
 
   def images
     {
