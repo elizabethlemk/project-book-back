@@ -15,7 +15,6 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def update
-    @project.images.attach(params[:project][:images])
     @project.update(project_params)
     if @project.valid?
       render json: { project: ProjectSerializer.new(@project) }, status: :accepted
@@ -35,6 +34,6 @@ class Api::V1::ProjectsController < ApplicationController
 
 
   def project_params
-    params.require(:project).permit(:user_id, :title, :color, :completed, :mood_board, images: [])
+    params.require(:project).permit(:user_id, :title, :color, :completed, :mood_board, :images)
   end
 end

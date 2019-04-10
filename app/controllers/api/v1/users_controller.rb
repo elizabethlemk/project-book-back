@@ -8,9 +8,6 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    if !@user.image.blank?
-      @user.image.attach(user_params[:image])
-    end
     if @user.valid?
       token = encode_token({ user_id: @user.id })
       render json: { user: UserSerializer.new(@user), jwt: token }, status: :created
