@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :colors, only: [:index, :create, :update, :destroy]
       resources :blog_posts, only: [:index, :show, :create, :destroy]
       resources :projects, only: [:index, :show, :create, :update, :destroy]
-      resources :users, only: [:create, :update, :destroy]
+      resources :users, only: [:index, :create, :update, :destroy]
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
     end
