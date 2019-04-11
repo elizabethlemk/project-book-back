@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_08_173045) do
+ActiveRecord::Schema.define(version: 2019_04_11_151609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 2019_04_08_173045) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.integer "project_id"
+    t.string "color_hex"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "links", force: :cascade do |t|
     t.integer "project_id"
     t.string "url"
@@ -63,7 +70,6 @@ ActiveRecord::Schema.define(version: 2019_04_08_173045) do
   create_table "projects", force: :cascade do |t|
     t.integer "user_id"
     t.string "title"
-    t.string "color"
     t.string "links"
     t.string "mood_board"
     t.boolean "completed"

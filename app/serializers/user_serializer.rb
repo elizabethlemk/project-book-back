@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :username, :first_name, :last_name, :email, :birthday, :image
+  attributes :id, :username, :first_name, :last_name, :email, :birthday, :image, :blog_posts, :projects
 
   def image
     {image_url: self.object.image.blob.service_url}

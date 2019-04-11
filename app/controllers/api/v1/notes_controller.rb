@@ -18,7 +18,7 @@ class Api::V1::NotesController < ApplicationController
   def update
     @note.update
     if @note.valid?
-      render json: { note: NoteSerializer.new(@project) }, status: :accepted
+      render json: { note: NoteSerializer.new(@note) }, status: :accepted
     else
       render json: { errors: @note.errors.full_messages } , status: :not_acceptable
     end

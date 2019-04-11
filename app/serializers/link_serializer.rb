@@ -1,5 +1,5 @@
 class LinkSerializer < ActiveModel::Serializer
-  attributes :id, :project_id, :url
+  attributes :id, :url
 
   belongs_to :project
 end

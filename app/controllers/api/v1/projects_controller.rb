@@ -1,5 +1,11 @@
 class Api::V1::ProjectsController < ApplicationController
-  before_action :find_project, except: [:create]
+  skip_before_action :authorized, only: [:index]
+  before_action :find_project, except: [:create, :index]
+
+  def index
+    @projects = Project.all
+    render json: @projects
+  end
 
   def show
     render json: { project: ProjectSerializer.new(@project) }
