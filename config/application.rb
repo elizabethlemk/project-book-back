@@ -32,6 +32,5 @@ module BackEnd
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.time_zone = Time.now.zone
   end
 end

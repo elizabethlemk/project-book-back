@@ -1,5 +1,5 @@
 class NoteSerializer < ActiveModel::Serializer
-  attributes :id, :type_name, :comment
+  attributes :id, :comment
 
   belongs_to :project
 end

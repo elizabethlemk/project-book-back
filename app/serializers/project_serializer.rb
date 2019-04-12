@@ -5,10 +5,12 @@ class ProjectSerializer < ActiveModel::Serializer
     self.object.user.username
   end
 
+  def colors
+    self.object.colors.sort_by(&:id)
+  end
+
   def images
-    {
-      image_urls: self.object.images.map { |image| image.blob.service_url }
-    }
+    self.object.images.map { |image| image.blob.service_url }
   end
 
   has_many :notes

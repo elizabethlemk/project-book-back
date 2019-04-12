@@ -25,7 +25,7 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def destroy
-    @note.destroy
+    @note.delete
   end
 
   private
