@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       resources :blog_posts, only: [:index, :show, :create, :destroy]
       resources :projects, only: [:index, :show, :create, :update, :destroy]
       resources :users, only: [:index, :create, :update, :destroy]
+      delete '/projects/:id/images', to: 'projects#destroy_image'
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
     end

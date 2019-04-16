@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   before_action :find_user, except: [:create, :profile, :index]
-  skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:create, :index, :update]
 
   def profile
     render json: { user: UserSerializer.new(current_user) }, status: :accepted
@@ -22,9 +22,12 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
-    unless @user.update(user_params)
-      render json: { errors: @user.errors.full_messages },
-             status: :unprocessable_entity
+    @user.skip_password_validation = true
+    @user.update(user_params)
+    if @user.valid?
+      render json: { user: UserSerializer.new(@user) }, status: :created
+    else
+      render json: { errors: @user.errors.full_messages } , status: :not_acceptable
     end
   end
 

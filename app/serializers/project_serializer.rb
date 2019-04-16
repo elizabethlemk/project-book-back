@@ -10,7 +10,7 @@ class ProjectSerializer < ActiveModel::Serializer
   end
 
   def images
-    self.object.images.map { |image| image.blob.service_url }
+    self.object.images.map { |image| { id: image.blob.id, img_url: image.blob.service_url} }
   end
 
   has_many :notes

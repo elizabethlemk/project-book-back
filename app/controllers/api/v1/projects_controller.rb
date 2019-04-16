@@ -1,6 +1,6 @@
 class Api::V1::ProjectsController < ApplicationController
   skip_before_action :authorized, only: [:index]
-  before_action :find_project, except: [:create, :index]
+  before_action :find_project, except: [:create, :index, :destroy_image]
 
   def index
     @projects = Project.all
@@ -31,6 +31,10 @@ class Api::V1::ProjectsController < ApplicationController
 
   def destroy
     @project.destroy
+  end
+
+  def destroy_image
+    @project.images.find(params[:id]).purge
   end
 
   private
