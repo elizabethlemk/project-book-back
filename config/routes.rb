@@ -6,10 +6,10 @@ Rails.application.routes.draw do
       resources :notes, only: [:index, :create, :update, :destroy]
       resources :links, only: [:index, :create, :destroy]
       resources :colors, only: [:index, :create, :update, :destroy]
-      resources :blog_posts, only: [:index, :show, :create, :destroy]
+      resources :blog_posts, only: [:index, :show, :create, :update, :destroy]
       resources :projects, only: [:index, :show, :create, :update, :destroy]
       resources :users, only: [:index, :create, :update, :destroy]
-      delete '/projects/:id/images', to: 'projects#destroy_image'
+      delete '/projects/:project_id/images/:image_id', to: 'projects#destroy_image'
       post '/login', to: 'auth#create'
       get '/profile', to: 'users#profile'
     end

@@ -34,7 +34,8 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def destroy_image
-    @project.images.find(params[:id]).purge
+    @project = Project.find(params[:project_id])
+    @project.images.find(params[:image_id]).purge
   end
 
   private

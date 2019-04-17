@@ -17,8 +17,12 @@ class Api::V1::BlogPostsController < ApplicationController
   end
 
   def update
-    @blog_post.update
-    render json: {blog_post: BlogPostSerializer.new(@blog_post) }
+    @blog_post.update(blog_post_params)
+    if @blog_post.valid?
+      render json: @blog_post
+    else
+      render json: { errors: @blog_post.errors.full_messages } , status: :not_acceptable
+    end
   end
 
   def destroy
