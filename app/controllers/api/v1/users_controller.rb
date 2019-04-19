@@ -17,6 +17,7 @@ class Api::V1::UsersController < ApplicationController
       token = encode_token({ user_id: @user.id })
       render json: { user: UserSerializer.new(@user), jwt: token }, status: :created
     else
+      byebug
       render json: { errors: @user.errors.full_messages } , status: :not_acceptable
     end
   end
@@ -39,7 +40,7 @@ class Api::V1::UsersController < ApplicationController
 
   def find_user
    @user = User.find(params[:id])
-   rescue ActiveRecord::RecordNotFound
+  rescue ActiveRecord::RecordNotFound
      render json: { errors: 'User not found' }, status: :not_found
   end
 
