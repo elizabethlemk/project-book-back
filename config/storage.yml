@@ -13,3 +13,10 @@ amazon:
   secret_access_key: <%= Rails.application.credentials.aws[:secret_access_key] %>
   region: <%= Rails.application.credentials.aws[:region] %>
   bucket: <%= Rails.application.credentials.aws[:bucket] %>
+
+amazon_prod:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.aws-prod[:access_key_id] %>
+  secret_access_key: <%= Rails.application.credentials.aws-prod[:secret_access_key] %>
+  region: <%= Rails.application.credentials.aws-prod[:region] %>
+  bucket: <%= Rails.application.credentials.aws-prod[:bucket] %>
