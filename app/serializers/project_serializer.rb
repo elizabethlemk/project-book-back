@@ -9,6 +9,14 @@ class ProjectSerializer < ActiveModel::Serializer
     self.object.colors.sort_by(&:id)
   end
 
+  def notes
+    self.object.notes.sort_by(&:idx)
+  end
+
+  def links
+    self.object.links.sort_by(&:idx)
+  end
+
   def images
     self.object.images.map { |image| { id: image.blob.id, img_url: image.blob.service_url} }
   end

@@ -35,6 +35,6 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def notes_params
-    params.require(:notes).permit(:user_id, :project_id, :type_name, :comment)
+    params.require(:notes).permit(:project_id, :idx, :comment)
   end
 end
